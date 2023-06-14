@@ -12,15 +12,15 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-  public function login(Request $request)
+public function login(Request $request)
 {
     $credentials = $request->only('nik', 'password');
 
     $karyawan = Karyawan::where('nik', $credentials['nik'])->first();
 
-    if (!$karyawan || !Hash::check($credentials['password'], $karyawan->password)) {
-        return response()->json(['error' => 'Invalid credentials'], 401);
-    }
+   // if (!$karyawan || !Hash::check($credentials['password'], $karyawan->password)) {
+   //    return response()->json(['error' => 'Invalid credentials'], 401);
+   // }
 
     Auth::loginUsingId($karyawan->id);
 
@@ -28,9 +28,4 @@ class AuthController extends Controller
 
     return response()->json(['token' => $tokenResult->accessToken], 200);
 }
-
-
-
-
-
 }
