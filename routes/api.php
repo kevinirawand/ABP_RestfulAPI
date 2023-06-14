@@ -13,9 +13,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', [AuthController::class, 'login']);
 
 Route::group(['prefix' => 'karyawan', 'as' => 'karyawan.'], function() {
-   Route::get('/test', [KaryawanController::class, function() {
-      return "TESTTT";
-   }]);
+   Route::get('/{nik}', [KaryawanController::class, 'getOneKaryawan']);
    Route::put('/{nik}', [KaryawanController::class, 'update']);
 });
 

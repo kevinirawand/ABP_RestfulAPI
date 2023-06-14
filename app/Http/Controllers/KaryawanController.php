@@ -37,4 +37,13 @@ class KaryawanController extends Controller
          ]
       ]);
    }
+
+   public function getOneKaryawan(Request $request) {
+      return response()->json([
+         'status' => 200,
+         'data' => [
+            Karyawan::where('nik', $request->nik)->first()
+         ]
+      ]);
+   }
 }
