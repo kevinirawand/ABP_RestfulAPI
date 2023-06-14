@@ -23,8 +23,8 @@ class KaryawanController extends Controller
    $karyawan = Karyawan::where('nik', $request->nik)->first();
    
    if ($request->image) {
-      $foto = time() . '.' . $request->foto->extension();
-      $request->foto->move(public_path('Assets/images/'), $image);
+      $foto = time() . '.' . $request->image->extension();
+      $request->image->move(public_path('Assets/images/'), $foto);
       $karyawan->update([
          "nama_lengkap" => $request->username,
          "no_hp" => $request->no_hp,
@@ -34,12 +34,10 @@ class KaryawanController extends Controller
    } else {
       $karyawan->update([
          "nama_lengkap" => $request->username,
-         "no_hp" => $request->no_hp,
+         "no_hp" => $request->no_hp, 
          "password" => Hash::make($request->password)
       ]);
    }
-
-   
 
    return Response()->json([
       'status' => 200,

@@ -14,7 +14,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::group(['prefix' => 'karyawan', 'as' => 'karyawan.'], function() {
    Route::get('/{nik}', [KaryawanController::class, 'show']);
-   Route::put('/{nik}', [KaryawanController::class, 'update']);
+   Route::post('/{nik}', [KaryawanController::class, 'update']);
 });
 
 // Route::get('/karyawan/{nik}', [KaryawanController::class, 'show']);

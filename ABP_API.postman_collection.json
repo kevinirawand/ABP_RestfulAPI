@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "d9812953-d524-4d30-8e68-50c30d92db82",
+		"name": "ABP_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20116514"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Karyawan",
+			"item": [
+				{
+					"name": "Update Karyawan",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "KevinID",
+									"type": "text"
+								},
+								{
+									"key": "no_hp",
+									"value": "1230123",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/asus Pc/Pictures/Screenshots/Screenshot (11).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/karyawan/1234",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"karyawan",
+								"1234"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Karyawan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/karyawan/1234",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"karyawan",
+								"1234"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
