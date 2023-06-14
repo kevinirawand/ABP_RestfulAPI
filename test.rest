@@ -1,0 +1,17 @@
+POST http://127.0.0.1:8000/api/login
+Content-Type: "application/json"
+
+{
+   "nik": "1301230123",
+   "password": "124safasf"
+}
+
+### 
+PUT http://127.0.0.1:8000/api/karyawan/1234
+Content-Type: "application/json"
+
+{
+   "username": "Kevin", 
+   "no_hp": "124safasf", 
+   "password": "1234"
+}
