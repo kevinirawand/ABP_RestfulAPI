@@ -14,18 +14,25 @@ class AuthController extends Controller
 {
 public function login(Request $request)
 {
-    $credentials = $request->only('nik', 'password');
+   $credentials = $request->validate([
+       'nik' => 'required',
+       'password' => 'required',
+   ]);
 
-    $karyawan = Karyawan::where('nik', $credentials['nik'])->first();
+   if (Auth::attempt($credentials)) {
+       $user = Auth::user();
+       $tokenResult = $user->createToken('API Token');
+       $token = $tokenResult->accessToken;
 
-   // if (!$karyawan || !Hash::check($credentials['password'], $karyawan->password)) {
-   //    return response()->json(['error' => 'Invalid credentials'], 401);
-   // }
+       // Retrieve the 'nik' value from the authenticated user
+       $nik = $user->nik;
+       $name = $user->nama_lengkap;
 
-    Auth::loginUsingId($karyawan->id);
+       return response()->json(['token' => $token, 'nik' => $nik, 'name' => $name], 200);
+   }
 
-    $tokenResult = $karyawan->createToken('API Token');
-
-    return response()->json(['token' => $tokenResult->accessToken], 200);
+   throw ValidationException::withMessages([
+       'nik' => ['The provided credentials are incorrect.'],
+   ]);
 }
 }

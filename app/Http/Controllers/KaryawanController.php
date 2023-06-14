@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Karyawan;
+use Illuminate\Support\Facades\Hash;
 
 
 class KaryawanController extends Controller
@@ -17,14 +18,14 @@ class KaryawanController extends Controller
          $karyawan->update([
             "nama_lengkap" => $request->username,
             "no_hp" => $request->no_hp,
-            "password" => $request->password,
+            "password" => Hash::make($request->password),
             "foto" => $foto
          ]);
       } else {
          $karyawan->update([
             "nama_lengkap" => $request->username,
             "no_hp" => $request->no_hp,
-            "password" => $request->password
+            "password" => Hash::make($request->password)
          ]);
       }
 
